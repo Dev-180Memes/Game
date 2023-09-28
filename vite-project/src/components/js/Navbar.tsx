@@ -4,6 +4,7 @@ import logo from "../../assets/logo.jpg"
 
 
 const Navbar = () => {
+
   return (
     <div className='navbar'>
 
@@ -23,7 +24,7 @@ const Navbar = () => {
         </div>  
 
         <div className="navbar-balance">
-          <h1>₦ 15000</h1>
+          <h1>₦ 30000</h1>
         </div>
 
       </div>

@@ -28,7 +28,7 @@
 .navbar-container {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     gap: 10px;
     background: rgb(63, 62, 62);
 }
