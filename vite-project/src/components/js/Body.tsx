@@ -28,6 +28,31 @@ const Body = () => {
 
   //////////////////////////////////////////////////////
 
+  // for the desired outcome ///////////////////////////
+
+  const aa = Math.floor((Math.random() * 21))
+  const ab = Math.floor((Math.random() * 21))
+  const ac = Math.floor((Math.random() * 21))
+  const ad = Math.floor((Math.random() * 21))
+  const ae = Math.floor((Math.random() * 21))
+  const af = Math.floor((Math.random() * 21))
+  const ag = Math.floor((Math.random() * 21))
+  const ah = Math.floor((Math.random() * 21))
+  const ai = Math.floor((Math.random() * 21))
+  const aj = Math.floor((Math.random() * 21))
+  const ak = Math.floor((Math.random() * 21))
+  const al = Math.floor((Math.random() * 21))
+  const am = Math.floor((Math.random() * 21))
+  const an = Math.floor((Math.random() * 21))
+  const ao = Math.floor((Math.random() * 21))
+  const ap = Math.floor((Math.random() * 21))
+  const aq = Math.floor((Math.random() * 21))
+  const ar = Math.floor((Math.random() * 21))
+  const as = Math.floor((Math.random() * 21))
+  const at = Math.floor((Math.random() * 21))
+
+  //////////////////////////////////////////////////////
+
   if (first === 11) {
     alert("you just won the jackpot")
   }
@@ -85,6 +110,34 @@ const Body = () => {
             </div>
 
           </div>
+
+          <div className="possible">
+              <div className="note">
+                <h2>POSSIBLE <br /> OUTCOME</h2>
+              </div>
+              <div className="outcome">
+                <p>1</p>
+                <p>2</p>
+                <p>3</p>
+                <p>4</p>
+                <p>5</p>
+                <p>6</p>
+                <p>7</p>
+                <p>8</p>
+                <p>9</p>
+                <p>10</p>
+                <p>11</p>
+                <p>12</p>
+                <p>13</p>
+                <p>14</p>
+                <p>15</p>
+                <p>16</p>
+                <p>17</p>
+                <p>18</p>
+                <p>19</p>
+                <p>20</p>
+              </div>
+            </div>
 
         </div>
 
