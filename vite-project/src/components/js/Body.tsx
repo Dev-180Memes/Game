@@ -39,6 +39,23 @@ const Body = () => {
 
         </div>
 
+        <div className="numbers">
+
+          <div className="choose">
+
+            <div className="possible">
+              <div className="note">
+                <h2>POSSIBLE <br /> OUTCOME</h2>
+              </div>
+              <div className="outcome">
+                
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
 
     </div>
