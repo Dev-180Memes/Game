@@ -3,13 +3,34 @@ import "../css/body.css"
 
 const Body = () => {
 
-   const first = Math.floor((Math.random() + 1) * 10)
-   const second = Math.floor(Math.random() * 21)
-   const third = Math.floor(Math.random() * 21)
+  // for the resulting numbers /////////////////////////
 
-   if (first === 11) {
-      alert("you just won the jackpot")
-   }
+  const first = Math.floor((Math.random() + 1) * 10)
+  const second = Math.floor(Math.random() * 21)
+  const third = Math.floor(Math.random() * 21)
+
+  //////////////////////////////////////////////////////
+
+  // for the possible outcomes /////////////////////////
+
+  const a = Math.floor((Math.random() * 21))
+  const b = Math.floor((Math.random() * 21))
+  const c = Math.floor((Math.random() * 21))
+  const d = Math.floor((Math.random() * 21))
+  const e = Math.floor((Math.random() * 21))
+  const f = Math.floor((Math.random() * 21))
+  const g = Math.floor((Math.random() * 21))
+  const h = Math.floor((Math.random() * 21))
+  const i = Math.floor((Math.random() * 21))
+  const j = Math.floor((Math.random() * 21))
+  const k = Math.floor((Math.random() * 21))
+  const l = Math.floor((Math.random() * 21))
+
+  //////////////////////////////////////////////////////
+
+  if (first === 11) {
+    alert("you just won the jackpot")
+  }
 
   return (
     <div>
@@ -48,7 +69,18 @@ const Body = () => {
                 <h2>POSSIBLE <br /> OUTCOME</h2>
               </div>
               <div className="outcome">
-                
+                <p>{a}</p>
+                <p>{b}</p>
+                <p>{c}</p>
+                <p>{d}</p>
+                <p>{e}</p>
+                <p>{f}</p>
+                <p>{g}</p>
+                <p>{h}</p>
+                <p>{i}</p>
+                <p>{j}</p>
+                <p>{k}</p>
+                <p>{l}</p>
               </div>
             </div>
 
