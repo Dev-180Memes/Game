@@ -1,0 +1,73 @@
+body {
+    background: #2C2C2C;
+}
+
+.intro {
+    text-align: center;
+    /* display: flex; */
+    margin: 20px 0;
+    color: red;
+}
+
+.we-pay {
+    color: green;
+}
+
+.numbers {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    justify-content: center;
+    justify-content: space-around;
+}
+
+.num1 {
+    height: 100px;
+    width: 100px;
+    align-items: center;
+    justify-content: center;
+    display: table-cell;
+    text-align: center;
+    display: flex;
+    font-size: 30px;
+    vertical-align: middle;
+    border-radius: 50%; /* may require vendor prefixes */
+    background: yellow;
+    color: black;
+    border: 2px solid red;
+    
+}
+
+.num2 {
+    height: 100px;
+    width: 100px;
+    align-items: center;
+    justify-content: center;
+    display: table-cell;
+    text-align: center;
+    display: flex;
+    font-size: 30px;
+    vertical-align: middle;
+    border-radius: 50%; /* may require vendor prefixes */
+    background: blue;
+    color: black;
+    border: 2px solid white;
+}
+
+.num3 {
+    height: 100px;
+    width: 100px;
+    align-items: center;
+    justify-content: center;
+    display: table-cell;
+    text-align: center;
+    display: flex;
+    font-size: 30px;
+    vertical-align: middle;
+    border-radius: 50%; /* may require vendor prefixes */
+    background: red;
+    color: black;
+    border: 2px solid green;
+}
+
