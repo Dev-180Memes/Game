@@ -28,9 +28,9 @@ const Body = () => {
 
   //////////////////////////////////////////////////////
 
-  if (first === 11) {
-    alert("you just won the jackpot")
-  }
+  // if (first === 11) {
+  //   alert("you just won the jackpot")
+  // }
 
   return (
     <div>
@@ -69,7 +69,7 @@ const Body = () => {
                 <h2>POSSIBLE <br /> OUTCOME</h2>
               </div>
               <div className="outcome">
-                <p className='outcome-1'>{a}</p>
+                <p className='1'>{a}</p>
                 <p>{b}</p>
                 <p>{c}</p>
                 <p>{d}</p>
@@ -87,33 +87,32 @@ const Body = () => {
           </div>
 
           <div className="possibles">
-              <div className="notes">
-                <h2>SELECT YOUR<br />OUTCOMES</h2>
-              </div>
-              <div className="outcomes">
-                <p>1</p>
-                <p>2</p>
-                <p>3</p>
-                <p>4</p>
-                <p>5</p>
-                <p>6</p>
-                <p>7</p>
-                <p>8</p>
-                <p>9</p>
-                <p>10</p>
-                <p>11</p>
-                <p>12</p>
-                <p>13</p>
-                <p>14</p>
-                <p>15</p>
-                <p>16</p>
-                <p>17</p>
-                <p>18</p>
-                <p>19</p>
-                <p>20</p>
-              </div>
+            <div className="notes">
+              <h2>SELECT YOUR<br />OUTCOMES</h2>
             </div>
-
+            <div className="outcomes">
+              <p>1</p>
+              <p>2</p>
+              <p>3</p>
+              <p>4</p>
+              <p>5</p>
+              <p>6</p>
+              <p>7</p>
+              <p>8</p>
+              <p>9</p>
+              <p>10</p>
+              <p>11</p>
+              <p>12</p>
+              <p>13</p>
+              <p>14</p>
+              <p>15</p>
+              <p>16</p>
+              <p>17</p>
+              <p>18</p>
+              <p>19</p>
+              <p>20</p>
+            </div>
+          </div>
         </div>
 
       </div>

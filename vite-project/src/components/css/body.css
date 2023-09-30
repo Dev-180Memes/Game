@@ -1,16 +1,18 @@
 body {
     background: #2C2C2C;
+    overflow: hidden;
 }
 
 .intro {
     text-align: center;
     /* display: flex; */
-    margin: 20px 0;
+    margin-top: 5px;
     color: red;
 }
 
 .we-pay {
     color: green;
+    margin-top: -15px;
 }
 
 .numbers {
@@ -77,21 +79,40 @@ body {
 }
 
 .possible {
-    margin-top: -140px;
+    margin-top: -60px;
 }
 
 .outcome {
     display: grid;
-    grid-template-columns: 55px 55px 55px;
-    grid-template-rows: 55px 55px 55px;
+    grid-template-columns: 52px 52px 52px;
+    grid-template-rows: 52px 52px 52px;
 }
 
-.outcome-1 {
-    /* grid-row: 1 / .5; */
-    /* grid-row-end: 1 /5; */
+.outcomes {
+    display: grid;
+    grid-template-columns: 55px 55px 55px 55px;
+    grid-template-rows: 55px 55px 55px 55px;
 }
 
 .outcome > p {
+    height: 35px;
+    width: 35px;
+    align-items: center;
+    justify-content: center;
+    display: table-cell;
+    text-align: center;
+    display: flex;
+    font-size: 25px;
+    vertical-align: middle;
+    border-radius: 50%; /* may require vendor prefixes */
+    background: red;
+    color: black;
+    margin-top: 25px;
+    margin-left: 10px;
+    border: 2px solid green;
+}
+
+.outcomes > p {
     height: 40px;
     width: 40px;
     align-items: center;
@@ -99,13 +120,18 @@ body {
     display: table-cell;
     text-align: center;
     display: flex;
-    font-size: 30px;
+    font-size: 28px;
     vertical-align: middle;
     border-radius: 50%; /* may require vendor prefixes */
     background: red;
     color: black;
     margin-top: 25px;
     border: 2px solid green;
+}
+
+.possibles {
+    border-left: 2px solid red;
+    padding-left: 10px;
 }
 
 
