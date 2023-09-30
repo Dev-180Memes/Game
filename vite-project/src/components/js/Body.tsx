@@ -117,6 +117,36 @@ const Body = () => {
 
       </div>
 
+      <div className="user-amount">
+
+        <div className="bet-amount">
+          <form action="">
+
+            <div className="the-amount">
+
+              <div className="how-much">
+                <label htmlFor="amount-to-stake">HOW MUCH:</label>
+
+                <input type="number" required min="200" id='amount-to-stake' />
+              </div>
+
+              <div className="multiplier">
+
+                <label htmlFor="multiplier">MULTIPLIER:</label>
+
+                <input type="number" id="multiplier" min="2" />
+
+              </div>
+
+            </div>
+
+            <button>PLAY!</button>
+
+          </form>
+        </div>
+
+      </div>
+
     </div>
   )
 }
