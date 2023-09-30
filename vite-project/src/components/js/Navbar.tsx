@@ -29,6 +29,8 @@ const Navbar = () => {
 
       </div>
 
+      <a href="https://google.com">How to play, Click Me!</a>
+
     </div>
   )
 }

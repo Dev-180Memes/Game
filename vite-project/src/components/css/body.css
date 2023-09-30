@@ -71,3 +71,20 @@ body {
     border: 2px solid green;
 }
 
+.numbers {
+    display: flex;
+    margin-top: 20px;
+}
+
+.possible {
+    margin-top: -140px;
+}
+
+.outcome {
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+    gap: -40px;
+}
+
+
