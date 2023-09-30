@@ -69,7 +69,7 @@ const Body = () => {
                 <h2>POSSIBLE <br /> OUTCOME</h2>
               </div>
               <div className="outcome">
-                <p>{a}</p>
+                <p className='outcome-1'>{a}</p>
                 <p>{b}</p>
                 <p>{c}</p>
                 <p>{d}</p>
