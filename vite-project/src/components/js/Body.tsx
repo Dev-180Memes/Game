@@ -1,7 +1,37 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "../css/body.css"
+import  { Firestore, collection, doc }  from 'firebase/firestore'
+import { db } from '../Config/Firebase'
+
 
 const Body = () => {
+  // for the balnace setting ///////////////////////
+
+  const [balance, setBalance] = useState(null)
+  const depositCollectionRef = collection(db, "users")
+
+  
+  useEffect(() => {
+
+    const userId = "lbwOuoyKZ7bh86PL5nowEt4VPd12"
+    const balanceRef = depositCollectionRef.doc(userId);
+
+    console.log(balanceRef);
+    
+    const unsubscribe = balanceRef.onSnapshot((doc) => {
+      if (doc.exists) {
+        setBalance(doc.data().balance);
+      }
+    });
+
+    return () => {
+      // Unsubscribe when the component unmounts
+      unsubscribe();
+    };
+
+  }, [])
+
+  //////////////////////////////////////////////////
 
   // for the resulting numbers /////////////////////////
 
@@ -71,6 +101,8 @@ const Body = () => {
         </div>
 
         <div className="numbers">
+
+          <h1>{balance !== null ? `$${balance}` : 'Loading...'}</h1>
 
             <div className="num1">
               <h1>{firstNumber}</h1>
