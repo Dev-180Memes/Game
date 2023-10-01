@@ -46,13 +46,13 @@ const Body = () => {
 
   // the function to check if the numbers aligns////////
 
-  const check = () => {
-    if ( a === first && b === second ) {
-      alert("you're done")
-    } else {
-      alert("Oops! Try again")
-    }
-  }
+  // const check = () => {
+  //   if ( a === first && b === second ) {
+  //     alert("you're done")
+  //   } else {
+  //     alert("Oops! Try again")
+  //   }
+  // }
 
   //////////////////////////////////////////////////////
 

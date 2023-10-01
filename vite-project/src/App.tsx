@@ -1,18 +1,15 @@
-import { useState } from 'react'
-import './App.css'
-import Navbar from "./components/js/Navbar"
-import Testimonies from './components/js/Testimonies'
-import Body from './components/js/Body'
+import React from 'react'
+import Apps from "./Apps"
+import SignIn from './components/js/SignIn'
+import { Routes, Route } from 'react-router-dom'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <div>
-      <Navbar />
-      <Testimonies />
-      <Body />
-    </div>
+    // <Apps />
+    <Routes>
+        <Route path="/" element={<Apps />} />
+        <Route path='signin' element={<SignIn />} />
+    </Routes>
   )
 }
 

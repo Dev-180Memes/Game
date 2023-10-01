@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword, signInWithPopup, signOut} from "firebas
 import { useState } from "react";
 import { Link } from "react-router-dom"
 // import Body from "./Body";
-import "./signIn.css"
+import "../css/signIn.css"
 import LogIn from "./LogIn";
 import Head from "../js/Navbar";
 
