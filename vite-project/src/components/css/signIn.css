@@ -70,9 +70,10 @@
 }
 
 ::placeholder {
-    color: black;
+    color: white;
     padding: 10px 10px;
     opacity: 60%;
+    opacity: 50%;
 }
 
 .confirmation {

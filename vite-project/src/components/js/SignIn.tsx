@@ -6,7 +6,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom"
 // import Body from "./Body";
 import "../css/signIn.css"
-import LogIn from "./LogIn";
 import Head from "../js/Navbar";
 
 function SignIn () {
@@ -103,7 +102,7 @@ function SignIn () {
         </div>
         <div className="user">
           <p>Already have an account?</p>
-          <p className="loginInA" ><Link to="body">Log In</Link></p>
+          <p className="loginInA" ><Link to="/">Log In</Link></p>
         </div>
       </div>
     </div>
