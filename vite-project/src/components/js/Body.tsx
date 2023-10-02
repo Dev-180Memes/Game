@@ -1,35 +1,57 @@
 import React, { useEffect, useState } from 'react'
 import "../css/body.css"
-import  { Firestore, collection, doc }  from 'firebase/firestore'
+import { FirebaseApp } from 'firebase/app'
+import  { Firestore, collection, doc, getDocs }  from 'firebase/firestore'
 import { db } from '../Config/Firebase'
 
 
 const Body = () => {
   // for the balnace setting ///////////////////////
 
-  const [balance, setBalance] = useState(null)
-  const depositCollectionRef = collection(db, "users")
+  useEffect (() => {
+    const getMovieList = async () => {
+
+      try {
+        const data = await getDocs(depositCollectionRef);
+        const filteredData = data.docs.map((doc) => ({
+        ...doc.data(), 
+        id: doc.id,
+      }))
+      
+    } catch (err) {
+      console.error(err)
+    }
+    }  
+
+    getMovieList();
+    
+}, [])
+
+  // const [balance, setBalance] = useState(null)
+  // const depositCollectionRef = collection(db, "users")
+  // console.log(depositCollectionRef);
+  
 
   
-  useEffect(() => {
+  // useEffect(() => {
 
-    const userId = "lbwOuoyKZ7bh86PL5nowEt4VPd12"
-    const balanceRef = depositCollectionRef.doc(userId);
+  //   const userId = "lbwOuoyKZ7bh86PL5nowEt4VPd12"
+  //   const balanceRef = depositCollectionRef.doc(userId);
 
-    console.log(balanceRef);
+  //   console.log(balanceRef);
     
-    const unsubscribe = balanceRef.onSnapshot((doc) => {
-      if (doc.exists) {
-        setBalance(doc.data().balance);
-      }
-    });
+  //   const unsubscribe = balanceRef.onSnapshot((doc) => {
+  //     if (doc.exists) {
+  //       setBalance(doc.data().balance);
+  //     }
+  //   });
 
-    return () => {
-      // Unsubscribe when the component unmounts
-      unsubscribe();
-    };
+  //   return () => {
+  //     // Unsubscribe when the component unmounts
+  //     unsubscribe();
+  //   };
 
-  }, [])
+  // }, [])
 
   //////////////////////////////////////////////////
 
@@ -102,17 +124,15 @@ const Body = () => {
 
         <div className="numbers">
 
-          <h1>{balance !== null ? `$${balance}` : 'Loading...'}</h1>
-
-            <div className="num1">
-              <h1>{firstNumber}</h1>
-            </div>
-            <div className="num2">
-              <h1>{second}</h1>
-            </div>
-            <div className="num3">
-              <h1>{third}</h1>
-            </div>
+          <div className="num1">
+            <h1>{firstNumber}</h1>
+          </div>
+          <div className="num2">
+            <h1>{second}</h1>
+          </div>
+          <div className="num3">
+            <h1>{third}</h1>
+          </div>
 
         </div>
 
