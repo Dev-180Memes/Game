@@ -8,24 +8,37 @@ import { db } from '../Config/Firebase'
 const Body = () => {
   // for the balnace setting ///////////////////////
 
-  useEffect (() => {
-    const getMovieList = async () => {
+  const userId = "lbwOuoyKZ7bh86PL5nowEt4VPd12"
 
-      try {
-        const data = await getDocs(depositCollectionRef);
-        const filteredData = data.docs.map((doc) => ({
-        ...doc.data(), 
-        id: doc.id,
-      }))
-      
-    } catch (err) {
-      console.error(err)
-    }
-    }  
+  const userDocRef = db.collection('users').doc(userId);
+  const userRef = collection(db, "users")
+  
 
-    getMovieList();
+  userRef.set({
+    balance: 100,
+  })
+  .then(() => {1
+    console.log('User data added to Firestore successfully!');
+  })
+
+//   useEffect (() => {
+//     const getMovieList = async () => {
+
+//       try {
+//         const data = await getDocs(userRef);
+//         const filteredData = data.docs.map((doc) => ({
+//         ...doc.data(), 
+//         id: doc.id,
+//       }))
+//       setDepositUser(filteredData)
+//     } catch (err) {
+//       console.error(err)
+//     }
+//     }  
+
+//     getMovieList();
     
-}, [])
+// }, [])
 
   // const [balance, setBalance] = useState(null)
   // const depositCollectionRef = collection(db, "users")
@@ -124,15 +137,15 @@ const Body = () => {
 
         <div className="numbers">
 
-          <div className="num1">
-            <h1>{firstNumber}</h1>
-          </div>
-          <div className="num2">
-            <h1>{second}</h1>
-          </div>
-          <div className="num3">
-            <h1>{third}</h1>
-          </div>
+            <div className="num1">
+              <h1>{firstNumber}</h1>
+            </div>
+            <div className="num2">
+              <h1>{second}</h1>
+            </div>
+            <div className="num3">
+              <h1>{third}</h1>
+            </div>
 
         </div>
 
