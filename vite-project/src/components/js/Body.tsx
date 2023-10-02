@@ -10,35 +10,24 @@ const Body = () => {
 
   const userId = "lbwOuoyKZ7bh86PL5nowEt4VPd12"
 
-  const userDocRef = db.collection('users').doc(userId);
-  const userRef = collection(db, "users")
-  
+  //   useEffect (() => {
+  //     const getMovieList = async () => {
 
-  userRef.set({
-    balance: 100,
-  })
-  .then(() => {1
-    console.log('User data added to Firestore successfully!');
-  })
+  //       try {
+  //         const data = await getDocs(userRef);
+  //         const filteredData = data.docs.map((doc) => ({
+  //         ...doc.data(), 
+  //         id: doc.id,
+  //       }))
+  //       setDepositUser(filteredData)
+  //     } catch (err) {
+  //       console.error(err)
+  //     }
+  //     }  
 
-//   useEffect (() => {
-//     const getMovieList = async () => {
-
-//       try {
-//         const data = await getDocs(userRef);
-//         const filteredData = data.docs.map((doc) => ({
-//         ...doc.data(), 
-//         id: doc.id,
-//       }))
-//       setDepositUser(filteredData)
-//     } catch (err) {
-//       console.error(err)
-//     }
-//     }  
-
-//     getMovieList();
-    
-// }, [])
+  //     getMovieList();
+      
+  // }, [])
 
   // const [balance, setBalance] = useState(null)
   // const depositCollectionRef = collection(db, "users")
