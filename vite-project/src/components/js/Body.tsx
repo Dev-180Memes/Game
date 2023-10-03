@@ -8,37 +8,42 @@ import { db } from '../Config/Firebase'
 const Body = () => {
   // for the balnace setting ///////////////////////
 
-  const userId = "lbwOuoyKZ7bh86PL5nowEt4VPd12"
 
-  //   useEffect (() => {
-  //     const getMovieList = async () => {
-
-  //       try {
-  //         const data = await getDocs(userRef);
-  //         const filteredData = data.docs.map((doc) => ({
-  //         ...doc.data(), 
-  //         id: doc.id,
-  //       }))
-  //       setDepositUser(filteredData)
-  //     } catch (err) {
-  //       console.error(err)
-  //     }
-  //     }  
-
-  //     getMovieList();
-      
-  // }, [])
-
-  // const [balance, setBalance] = useState(null)
-  // const depositCollectionRef = collection(db, "users")
-  // console.log(depositCollectionRef);
+  const [users, setUsers] = useState([])
+  const [balance, setBalance] = useState(null)
+  const depositCollectionRef = collection(db, "users")
+  console.log(depositCollectionRef);
   
+  // const userId = "lbwOuoyKZ7bh86PL5nowEt4VPd12"
+
+  useEffect (() => {
+    const getMovieList = async () => {
+
+      try {
+        const data = await getDocs(depositCollectionRef);
+        const userId = "lbwOuoyKZ7bh86PL5nowEt4VPd12"
+        const filteredData = data.docs.map((doc) => ({
+        ...doc.data(), 
+        id: userId,
+      }))
+      setUsers(filteredData)
+    } catch (err) {
+      console.error(err)
+    }
+    }  
+
+    getMovieList();
+      
+  }, [])
+
 
   
   // useEffect(() => {
 
   //   const userId = "lbwOuoyKZ7bh86PL5nowEt4VPd12"
-  //   const balanceRef = depositCollectionRef.doc(userId);
+  //   const balanceRef = () => {
+  //     depositCollectionRef.doc.userId
+  //   }
 
   //   console.log(balanceRef);
     
