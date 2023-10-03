@@ -15,16 +15,16 @@ const Body = () => {
   console.log(depositCollectionRef);
   
   // const userId = "lbwOuoyKZ7bh86PL5nowEt4VPd12"
+  // const userId = "lbwOuoyKZ7bh86PL5nowEt4VPd12"
 
   useEffect (() => {
     const getMovieList = async () => {
 
       try {
         const data = await getDocs(depositCollectionRef);
-        const userId = "lbwOuoyKZ7bh86PL5nowEt4VPd12"
         const filteredData = data.docs.map((doc) => ({
         ...doc.data(), 
-        id: userId,
+        id: "lbwOuoyKZ7bh86PL5nowEt4VPd12",
       }))
       setUsers(filteredData)
     } catch (err) {
@@ -123,6 +123,9 @@ const Body = () => {
         <div className="main">
 
             <div className="intro">
+            {users.map ((digits) => (
+              <h1>₦{digits.balance}</h1>
+            ))}
               <h1>YOU PLAY</h1> <br />
               <h1 className='we-pay'>WE PAY!</h1>
             </div>
