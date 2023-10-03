@@ -14,7 +14,7 @@ const Body = () => {
   const depositCollectionRef = collection(db, "users")
   console.log(depositCollectionRef);
   
-  // const userId = "lbwOuoyKZ7bh86PL5nowEt4VPd12"
+  const userId = "lbwOuoyKZ7bh86PL5nowEt4VPd12"
   // const userId = "lbwOuoyKZ7bh86PL5nowEt4VPd12"
 
   useEffect (() => {
@@ -36,7 +36,23 @@ const Body = () => {
       
   }, [])
 
-
+  useEffect(() => {
+    if (user) {
+      const db = firebase.firestore();
+      db.collection("users").doc(user.uid).get()
+        .then((doc) => {
+          if (doc.exists) {
+            const userBalance = doc.data().balance;
+            setBalance(userBalance);
+          } else {
+            console.log("No such document!");
+          }
+        })
+        .catch((error) => {
+          console.log("Error getting document:", error);
+        });
+    }
+  }, [user]);
   
   // useEffect(() => {
 
