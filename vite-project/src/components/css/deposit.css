@@ -121,3 +121,13 @@
     color: white;
 }
 
+.input-usdt {
+    width: 500px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    text-align: center;
+    margin-left: -110px;
+}
+

@@ -77,6 +77,18 @@ export const Deposit = () => {
                     <input type="text" value="" />
                 </div>
 
+                <h2>BY CRYPTOCURRENCY</h2>
+
+                <div className="accountNumber">
+                    <p>TETHER(USDT)</p>
+                    <input className='input-usdt' type="text" value="0x68c96acb5b9aa9c154e90c1948b64a051cd06e9a" />
+                </div>
+
+                <div className="accountNumber">
+                    <p>NETWORK(OPTIONAL)</p>
+                    <input type="text" value="BEP 20" />
+                </div>
+
                 <div className="accountNumberUser">
                     <p>Enter Sender's Acct Name/Your PLUTO username</p>
                     <input 

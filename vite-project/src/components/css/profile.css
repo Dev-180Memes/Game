@@ -1,0 +1,26 @@
+.profile-section {
+    margin-top: 60%;
+    margin-left: -20%;
+}
+
+.span {
+    color: red;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.button-profile {
+    margin-top: 30px;
+    margin-left: -20%;
+}
+
+.button-profile > button {
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+}

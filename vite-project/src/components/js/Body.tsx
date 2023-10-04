@@ -136,7 +136,7 @@ const Body = () => {
               <h1>YOU PLAY</h1> <br />
               <h1 className='we-pay'>WE PAY!</h1>
               {users.map((user) => (
-                <li key={users.uid}>{user.balance}: {user.email}</li>
+                <li key={user.id}>{user.balance}: {user.email}</li>
               ))}
             </div>
 
