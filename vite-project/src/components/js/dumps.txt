@@ -1,0 +1,28 @@
+// useEffect(() => {
+
+//   const userId = "lbwOuoyKZ7bh86PL5nowEt4VPd12"
+//   const balanceRef = () => {
+//     depositCollectionRef.doc.userId
+//   }
+
+//   console.log(balanceRef);
+
+//   const unsubscribe = balanceRef.onSnapshot((doc) => {
+//     if (doc.exists) {
+//       setBalance(doc.data().balance);
+//     }
+//   });
+
+//   return () => {
+//     // Unsubscribe when the component unmounts
+//     unsubscribe();
+//   };
+
+// }, [])
+
+
+////////////////////////////////   the code above is for the trials from Chat to be able to get balance for individual users  ///////////////
+
+
+// const userId = "lbwOuoyKZ7bh86PL5nowEt4VPd12"
+// const userId = "lbwOuoyKZ7bh86PL5nowEt4VPd12"

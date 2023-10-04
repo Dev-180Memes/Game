@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import "../css/body.css"
-// import { FirebaseApp } from 'firebase/app'
 import  { collection, doc, getDocs }  from 'firebase/firestore'
 import { db, auth } from '../Config/Firebase'
 
 const Body = () => {
-  // for the balnace setting ///////////////////////
-
 
   const [users, setUsers] = useState([])
   const depositCollectionRef = collection(db, "users")
@@ -20,7 +17,7 @@ const Body = () => {
         const data = await getDocs(depositCollectionRef);
         const filteredData = data.docs.map((doc) => ({
         ...doc.data(), 
-        id: doc.id,
+        id: doc.userId,
       }))
       setUsers(filteredData)
     } catch (err) {
