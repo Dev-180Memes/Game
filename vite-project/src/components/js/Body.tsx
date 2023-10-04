@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import "../css/body.css"
-import { FirebaseApp } from 'firebase/app'
-import  { Firestore, collection, doc, getDocs }  from 'firebase/firestore'
-import { db } from '../Config/Firebase'
-
+// import { FirebaseApp } from 'firebase/app'
+import  { collection, doc, getDocs }  from 'firebase/firestore'
+import { db, auth } from '../Config/Firebase'
 
 const Body = () => {
   // for the balnace setting ///////////////////////
 
 
   const [users, setUsers] = useState([])
-  const [balance, setBalance] = useState(null)
   const depositCollectionRef = collection(db, "users")
-  console.log(depositCollectionRef);
   
-  const userId = "lbwOuoyKZ7bh86PL5nowEt4VPd12"
-  // const userId = "lbwOuoyKZ7bh86PL5nowEt4VPd12"
+  
 
   useEffect (() => {
     const getMovieList = async () => {
@@ -24,7 +20,7 @@ const Body = () => {
         const data = await getDocs(depositCollectionRef);
         const filteredData = data.docs.map((doc) => ({
         ...doc.data(), 
-        id: "lbwOuoyKZ7bh86PL5nowEt4VPd12",
+        id: doc.id,
       }))
       setUsers(filteredData)
     } catch (err) {
@@ -35,46 +31,6 @@ const Body = () => {
     getMovieList();
       
   }, [])
-
-  useEffect(() => {
-    if (user) {
-      const db = firebase.firestore();
-      db.collection("users").doc(user.uid).get()
-        .then((doc) => {
-          if (doc.exists) {
-            const userBalance = doc.data().balance;
-            setBalance(userBalance);
-          } else {
-            console.log("No such document!");
-          }
-        })
-        .catch((error) => {
-          console.log("Error getting document:", error);
-        });
-    }
-  }, [user]);
-  
-  // useEffect(() => {
-
-  //   const userId = "lbwOuoyKZ7bh86PL5nowEt4VPd12"
-  //   const balanceRef = () => {
-  //     depositCollectionRef.doc.userId
-  //   }
-
-  //   console.log(balanceRef);
-    
-  //   const unsubscribe = balanceRef.onSnapshot((doc) => {
-  //     if (doc.exists) {
-  //       setBalance(doc.data().balance);
-  //     }
-  //   });
-
-  //   return () => {
-  //     // Unsubscribe when the component unmounts
-  //     unsubscribe();
-  //   };
-
-  // }, [])
 
   //////////////////////////////////////////////////
 
