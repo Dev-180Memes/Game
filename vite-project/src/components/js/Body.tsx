@@ -1,12 +1,38 @@
 import React, { useEffect, useState } from 'react'
 import "../css/body.css"
-import  { collection, doc, getDocs }  from 'firebase/firestore'
+import  { collection, doc, getDocs,where, query }  from 'firebase/firestore'
 import { db, auth } from '../Config/Firebase'
 
 const Body = () => {
 
   const [users, setUsers] = useState([])
   const depositCollectionRef = collection(db, "users")
+
+  // from Chat /////////////////////////////
+
+  const user = auth.currentUser
+
+  useEffect(() => {
+    const getUsersData = async () => {
+      try {
+        if (user) {
+          // Create a query to fetch data only for the current user based on their UID
+          const q = query(depositCollectionRef, where('userId', '==', user.uid));
+          const data = await getDocs(q);
+          const filteredData = data.docs.map((doc) => ({
+            ...doc.data(),
+            id: doc.id,
+          }));
+          setUsers(filteredData);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    getUsersData();
+  }, [users]); // Include 'user' in the dependency array to refetch data when the user changes
+  // from Chat /////////////////////////////
   
   
 
@@ -33,19 +59,30 @@ const Body = () => {
 
   // for the resulting numbers /////////////////////////
 
-  const first = Math.floor((Math.random() + 1) * 10)
-  const second = Math.floor(Math.random() * 21)
-  const third = Math.floor(Math.random() * 21)
-
+  
   const [firstNumber, setFirstNumber] = useState()
-   
+  const [secondNumber, setSecondNumber] = useState()
+  const [thirdNumber, setThirdNumber] = useState()
+  
   const setFirst = () => {
     const first = Math.floor((Math.random() + 1) * 10)
     setFirstNumber(first)
   }
+  
+  const setSecond = () => {
+    const second = Math.floor(Math.random() * 21)
+    setSecondNumber(second)
+  }
+  
+  const setThird = () => {   
+    const third = Math.floor(Math.random() * 21)
+    setThirdNumber(third)
+  }
 
   const general = () => {
     setFirst();
+    setSecond();
+    setThird();
     check();
   }
 
@@ -107,10 +144,10 @@ const Body = () => {
               <h1>{firstNumber}</h1>
             </div>
             <div className="num2">
-              <h1>{second}</h1>
+              <h1>{secondNumber}</h1>
             </div>
             <div className="num3">
-              <h1>{third}</h1>
+              <h1>{thirdNumber}</h1>
             </div>
 
         </div>
@@ -199,6 +236,7 @@ const Body = () => {
                 id="multiplier" 
                 min="2"
                 placeholder='Enter your multiplier' 
+                required
                 />
 
               </div>
