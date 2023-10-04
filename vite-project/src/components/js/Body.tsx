@@ -17,7 +17,7 @@ const Body = () => {
       try {
         if (user) {
           // Create a query to fetch data only for the current user based on their UID
-          const q = query(depositCollectionRef, where('userId', '==', user.uid));
+          const q = query(depositCollectionRef, where('uid', '==', user.uid));
           const data = await getDocs(q);
           const filteredData = data.docs.map((doc) => ({
             ...doc.data(),
@@ -32,6 +32,7 @@ const Body = () => {
 
     getUsersData();
   }, [users]); // Include 'user' in the dependency array to refetch data when the user changes
+  
   // from Chat /////////////////////////////
   
   
@@ -83,7 +84,7 @@ const Body = () => {
     setFirst();
     setSecond();
     setThird();
-    check();
+    // check();
   }
 
   const mathBal = () => {
@@ -129,11 +130,14 @@ const Body = () => {
         <div className="main">
 
             <div className="intro">
-            {users.map ((digits) => (
+            {/* {users.map ((digits) => (
               <h1>₦{digits.balance}</h1>
-            ))}
+            ))} */}
               <h1>YOU PLAY</h1> <br />
               <h1 className='we-pay'>WE PAY!</h1>
+              {users.map((user) => (
+                <li key={users.uid}>{user.balance}: {user.email}</li>
+              ))}
             </div>
 
         </div>

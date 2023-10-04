@@ -1,6 +1,7 @@
 import React from 'react'
 import "../css/navbar.css"
 import logo from "../../assets/logo.jpg"
+import { Link } from 'react-router-dom'
 
 
 const Navbar = () => {
@@ -10,21 +11,23 @@ const Navbar = () => {
 
       <div className="navbar-container">
 
-        <div className="navbar-logo">
-          <img className='logo-img' src={logo} alt="" />
-          <h1>PLUTO</h1>
-        </div>
+        <Link to="/">
+          <div className="navbar-logo">
+            <img className='logo-img' src={logo} alt="" />
+            <h1>PLUTO</h1>
+          </div>
+        </Link>
 
         <div className="profile">
-          <p>PROFILE</p>
+          <p><Link to="../profile">PROFILE</Link></p>
         </div>
 
         <div className="withdraw">
-          <p>WITHDRAW</p>
+          <p><Link to="../withdraw">WITHDRAW</Link></p>
         </div>  
 
         <div className="navbar-balance">
-          <h1>₦ 30000</h1>
+          <h1><Link to="../deposit">₦ 30000</Link></h1>
         </div>
 
       </div>
