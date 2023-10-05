@@ -3,7 +3,7 @@ import "../css/body.css"
 import  { collection, doc, getDocs,where, query }  from 'firebase/firestore'
 import { db, auth } from '../Config/Firebase'
 
-const Body = () => {
+const Body = ({ usal }) => {
   // for the resulting numbers /////////////////////////
 
   
@@ -30,6 +30,7 @@ const Body = () => {
     setFirst();
     setSecond();
     setThird();
+    usal();
     // check();
   }
 
