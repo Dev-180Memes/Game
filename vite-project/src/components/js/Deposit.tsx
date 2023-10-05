@@ -77,7 +77,7 @@ export const Deposit = () => {
                     <input type="text" value="" />
                 </div>
 
-                <h2>BY CRYPTOCURRENCY</h2>
+                <h2>OR</h2>
 
                 <div className="accountNumber">
                     <p>TETHER(USDT)</p>

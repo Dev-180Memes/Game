@@ -4,60 +4,6 @@ import  { collection, doc, getDocs,where, query }  from 'firebase/firestore'
 import { db, auth } from '../Config/Firebase'
 
 const Body = () => {
-
-  const [users, setUsers] = useState([])
-  const depositCollectionRef = collection(db, "users")
-
-  // from Chat /////////////////////////////
-
-  const user = auth.currentUser
-
-  useEffect(() => {
-    const getUsersData = async () => {
-      try {
-        if (user) {
-          // Create a query to fetch data only for the current user based on their UID
-          const q = query(depositCollectionRef, where('uid', '==', user.uid));
-          const data = await getDocs(q);
-          const filteredData = data.docs.map((doc) => ({
-            ...doc.data(),
-            id: doc.id,
-          }));
-          setUsers(filteredData);
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    getUsersData();
-  }, [users]); // Include 'user' in the dependency array to refetch data when the user changes
-  
-  // from Chat /////////////////////////////
-  
-  
-
-  useEffect (() => {
-    const getMovieList = async () => {
-
-      try {
-        const data = await getDocs(depositCollectionRef);
-        const filteredData = data.docs.map((doc) => ({
-        ...doc.data(), 
-        id: doc.userId,
-      }))
-      setUsers(filteredData)
-    } catch (err) {
-      console.error(err)
-    }
-    }  
-
-    getMovieList();
-      
-  }, [])
-
-  //////////////////////////////////////////////////
-
   // for the resulting numbers /////////////////////////
 
   
@@ -135,9 +81,6 @@ const Body = () => {
             ))} */}
               <h1>YOU PLAY</h1> <br />
               <h1 className='we-pay'>WE PAY!</h1>
-              {users.map((user) => (
-                <li key={user.id}>{user.balance}: {user.email}</li>
-              ))}
             </div>
 
         </div>
