@@ -12,9 +12,12 @@ const Navbar = () => {
 
   const [users, setUsers] = useState([])
   const [balancers, setBalancers] = useState()
+  const [ amountToSubtract, setAmountToSubtract ] = useState(100)
   const depositCollectionRef = collection(db, "users")
 
-
+  function subtractAmount() {
+    setUsers( users.balance - amountToSubtract )
+  }
   
   // from Chat /////////////////////////////
 
@@ -39,53 +42,53 @@ const Navbar = () => {
     };
 
     getUsersData();
-  }, [users, depositCollectionRef]); // Include 'user' in the dependency array to refetch data when the user changes
+  }, [users]); // Include 'user' in the dependency array to refetch data when the user changes
   
-  const handlePlay = async () => {
-  if (users.length === 0) {
-    console.error('User data not available');
-    return;
-  }
+  // const handlePlay = async () => {
+  // if (users.length === 0) {
+  //   console.error('User data not available');
+  //   return;
+  // }
 
-  const userBalance = users[0].balance;
-  const amountToSubtract = 10;
+  // const userBalance = users[0].balance;
+  //   
 
-  const newBalance = userBalance - amountToSubtract;
+  //   const newBalance = userBalance - amountToSubtract;
 
-  try {
-    // Update the balance in Firestore
-    const userDocRef = db.collection('users').doc(user.uid);
-    await userDocRef.update({ balance: newBalance });
+  //   try {
+  //     // Update the balance in Firestore
+  //     const userDocRef = db.collection('users').doc(user.uid);
+  //     await userDocRef.update({ balance: newBalance });
 
-    // Update the local state with the new balance
-    setUsers([{ ...users[0], balance: newBalance }]);
-  } catch (error) {
-    console.error('Error updating balance:', error);
-  }
-};
+  //     // Update the local state with the new balance
+  //     setUsers([{ ...users[0], balance: newBalance }]);
+  //   } catch (error) {
+  //     console.error('Error updating balance:', error);
+  //   }
+  // };
 
   // from Chat /////////////////////////////
   
   
 
-  // useEffect (() => {
-  //   const getMovieList = async () => {
+  useEffect (() => {
+    const getMovieList = async () => {
 
-  //     try {
-  //       const data = await getDocs(depositCollectionRef);
-  //       const filteredData = data.docs.map((doc) => ({
-  //       ...doc.data(), 
-  //       id: doc.userId,
-  //     }))
-  //     setUsers(filteredData)
-  //   } catch (err) {
-  //     console.error(err)
-  //   }
-  //   }  
+      try {
+        const data = await getDocs(depositCollectionRef);
+        const filteredData = data.docs.map((doc) => ({
+        ...doc.data(), 
+        id: doc.userId,
+      }))
+      setUsers(filteredData)
+    } catch (err) {
+      console.error(err)
+    }
+    }  
 
-  //   getMovieList();
+    getMovieList();
       
-  // }, [])
+  }, [])
 
   //////////////////////////////////////////////////
 
@@ -96,10 +99,7 @@ const Navbar = () => {
 
       <div className="navbar-container">
 
-      <div>
-        <h2>Balance: ${users.length > 0 ? users[0].balance : 0}</h2>
-        <button onClick={handlePlay}>Play</button>
-      </div>
+        
 
         <Link to="/">
           <div className="navbar-logo">
@@ -108,7 +108,8 @@ const Navbar = () => {
           </div>
         </Link>
 
-        
+        <button onClick={subtractAmount}>Substract</button>
+        <input type="text" onChange={(e) => setAmountToSubtract(e.target.value)} />
 
         <div className="profile">
           <p><Link to="../profile">PROFILE</Link></p>
