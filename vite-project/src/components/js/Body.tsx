@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import "../css/body.css"
+import Navbar from './Navbar'
 import  { collection, doc, getDocs,where, query }  from 'firebase/firestore'
 import { db, auth } from '../Config/Firebase'
+import Testimonies from './Testimonies'
 
-const Body = ({ usal }) => {
+const Body = () => {
   // for the resulting numbers /////////////////////////
 
   
@@ -71,7 +73,8 @@ const Body = ({ usal }) => {
 
   return (
     <div>
-
+      <Navbar />
+      <Testimonies />
       <div className="whole">
 
         <div className="main">

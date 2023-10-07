@@ -8,7 +8,7 @@ import { googleProvider } from "../Config/Firebase";
 import { createUserWithEmailAndPassword, signInWithPopup, signOut} from "firebase/auth";
 
 
-const Navbar = ({ signInWithGoogle }) => {
+const Navbar = () => {
 
   //// trials ////////////////////////////////////////
 
@@ -16,15 +16,6 @@ const Navbar = ({ signInWithGoogle }) => {
   const [balancers, setBalancers] = useState(200)
   const depositCollectionRef = collection(db, "users")
 
-  const subtractOnClick = ({ firstNumber, secondNumber, thirdNumber }) => {
-    if (firstNumber === 10) {
-      
-    }
-  }
-
-  const google = () => {
-    setImmediate(signInWithGoogle)
-  }
 
   
   // from Chat /////////////////////////////
@@ -130,11 +121,9 @@ const Navbar = ({ signInWithGoogle }) => {
           <p><Link to="../withdraw">WITHDRAW</Link></p>
         </div> 
 
-        <button onClick={google}>check</button>
-
         <div className="navbar-balance">
           <h1><Link to="../deposit">{users.map ((users) => (
-          <p onChange={(e) => setBalancers(e.target.value)} key={users.id}>₦ {users.balance/100}</p>
+          <p onChange={(e) => setBalancers(e.target.value)} key={users.id}>₦ {users.balance}</p>
         ))}</Link></h1>
         </div>
 
