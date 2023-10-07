@@ -4,16 +4,27 @@ import  { collection, doc, getDocs,where, query }  from 'firebase/firestore'
 import { db, auth } from '../Config/Firebase'
 import logo from "../../assets/logo.jpg"
 import { Link } from 'react-router-dom'
+import { googleProvider } from "../Config/Firebase";
+import { createUserWithEmailAndPassword, signInWithPopup, signOut} from "firebase/auth";
 
 
-const Navbar = () => {
+const Navbar = ({ signInWithGoogle }) => {
 
   //// trials ////////////////////////////////////////
 
   const [users, setUsers] = useState([])
-  const [balancers, setBalancers] = useState()
-  const [ amountToSubtract, setAmountToSubtract ] = useState(100)
+  const [balancers, setBalancers] = useState(200)
   const depositCollectionRef = collection(db, "users")
+
+  const subtractOnClick = ({ firstNumber, secondNumber, thirdNumber }) => {
+    if (firstNumber === 10) {
+      
+    }
+  }
+
+  const google = () => {
+    setImmediate(signInWithGoogle)
+  }
 
   
   // from Chat /////////////////////////////
@@ -65,6 +76,9 @@ const Navbar = () => {
   // };
 
   // from Chat /////////////////////////////
+
+  
+  
   
   
 
@@ -114,11 +128,13 @@ const Navbar = () => {
 
         <div className="withdraw">
           <p><Link to="../withdraw">WITHDRAW</Link></p>
-        </div>  
+        </div> 
+
+        <button onClick={google}>check</button>
 
         <div className="navbar-balance">
           <h1><Link to="../deposit">{users.map ((users) => (
-          <p key={users.id}>₦ {users.balance}</p>
+          <p onChange={(e) => setBalancers(e.target.value)} key={users.id}>₦ {users.balance/100}</p>
         ))}</Link></h1>
         </div>
 
