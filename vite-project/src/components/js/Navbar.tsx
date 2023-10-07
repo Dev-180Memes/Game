@@ -15,9 +15,6 @@ const Navbar = () => {
   const [ amountToSubtract, setAmountToSubtract ] = useState(100)
   const depositCollectionRef = collection(db, "users")
 
-  function subtractAmount() {
-    setUsers( users.balance - amountToSubtract )
-  }
   
   // from Chat /////////////////////////////
 
@@ -108,8 +105,8 @@ const Navbar = () => {
           </div>
         </Link>
 
-        <button onClick={subtractAmount}>Substract</button>
-        <input type="text" onChange={(e) => setAmountToSubtract(e.target.value)} />
+        {/* <button onClick={subtractAmount}>Substract</button>
+        <input type="text" onChange={(e) => setAmountToSubtract(e.target.value)} /> */}
 
         <div className="profile">
           <p><Link to="../profile">PROFILE</Link></p>
