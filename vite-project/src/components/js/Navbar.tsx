@@ -12,45 +12,7 @@ const Navbar = (props) => {
 
   //// trials ////////////////////////////////////////
 
-  const [users, setUsers] = useState([])
-  const [balancers, setBalancers] = useState(200)
-  const [display, setDisplay] = useState(balancers)
-  const depositCollectionRef = collection(db, "users")
-
-
-  // const useThis = () => {
-  //   setBalancers(props.stake)
-  // }
-
-  // const calculation = () => {
-  //   setDisplay(balancers * mainBalance )
-  // }
-
   
-  // from Chat /////////////////////////////
-
-  const user = auth.currentUser
-
-  useEffect(() => {
-    const getUsersData = async () => {
-      try {
-        if (user) {
-          // Create a query to fetch data only for the current user based on their UID
-          const q = query(depositCollectionRef, where('uid', '==', user.uid));
-          const data = await getDocs(q);
-          const filteredData = data.docs.map((doc) => ({
-            ...doc.data(),
-            id: doc.id,
-          }));
-          setUsers(filteredData);
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    getUsersData();
-  }, [users, depositCollectionRef]); 
 
 
   const handleAdd = () => {
@@ -141,9 +103,6 @@ const Navbar = (props) => {
           </div>
         </Link>
 
-        {/* <button onClick={subtractAmount}>Substract</button>
-        <input type="text" onChange={(e) => setAmountToSubtract(e.target.value)} /> */}
-
         <div className="profile">
           <p><Link to="../profile">PROFILE</Link></p>
         </div>
@@ -152,13 +111,9 @@ const Navbar = (props) => {
           <p><Link to="../withdraw">WITHDRAW</Link></p>
         </div> 
 
-        <div className="navbar-balance">
-          <h1><Link to="../deposit">{users.map ((users) => (
-          <div>
-            <p key={users.id}>₦ {users.balance-balancers}</p>
-          </div>
-        ))}</Link></h1>
-        </div>
+        <div className="withdraw">
+          <a href='https://www.google.com'>SUPPORT</a>
+        </div> 
 
       </div>
 

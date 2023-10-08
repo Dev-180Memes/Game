@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import "../css/body.css"
 import Navbar from './Navbar'
-import  { collection, doc, getDocs,where, query }  from 'firebase/firestore'
+import  { collection, addDoc, doc, getDocs,where, query }  from 'firebase/firestore'
 import { db, auth } from '../Config/Firebase'
 import Testimonies from './Testimonies'
 
 const Body = () => {
+
+  // for the staking and multiplier settings ////////
+
+  const [staking, setStaking] = useState(0)
+  const [multiplier, setMultiplier] = useState(0)
+
+  // for the staking and multiplier settings ////////
+
   // for the resulting numbers /////////////////////////
 
   
   const [firstNumber, setFirstNumber] = useState()
   const [secondNumber, setSecondNumber] = useState()
   const [thirdNumber, setThirdNumber] = useState()
-
-  // for the amount and the multiplier /////////
-
-  const [amountToStake, setAmountToStake] = useState()
-  const [stakeMultiplier, setStakeMultiplier] = useState()
-
-  // for the amount and the multiplier /////////
 
   // for the guessed numbers ///
 
@@ -64,6 +66,7 @@ const Body = () => {
     setFirst();
     setSecond();
     setThird();
+    onSubmitMovies();
     // check();
   }
 
@@ -102,10 +105,79 @@ const Body = () => {
 
   //////////////////////////////////////////////////////
 
+  // for the balance functions ///////////////
+
+  const [users, setUsers] = useState([])
+  const [balancers, setBalancers] = useState(0)
+  const [otherBalance, setOtherBalance] = useState(balancers)
+  const [display, setDisplay] = useState(balancers)
+  const depositCollectionRef = collection(db, "users")
+
+
+  const useThis = () => {
+    setBalancers(props.stake)
+  }
+
+  // const calculation = () => {
+  //   setDisplay(balancers * mainBalance )
+  // }
+
+  // for the balance functions ///////////////
+
+
+  
+  // from Chat /////////////////////////////
+
+  const user = auth.currentUser
+
+  useEffect(() => {
+    const getUsersData = async () => {
+      try {
+        if (user) {
+          // Create a query to fetch data only for the current user based on their UID
+          const q = query(depositCollectionRef, where('uid', '==', user.uid));
+          const data = await getDocs(q);
+          const filteredData = data.docs.map((doc) => ({
+            ...doc.data(),
+            id: doc.id,
+          }));
+          setUsers(filteredData);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    getUsersData();
+  }, [users, depositCollectionRef]); 
+
+  const onSubmitMovies = async () => {
+    try {
+      await addDoc(depositCollectionRef, {
+        stake: staking,
+        multiplier: multiplier, 
+        userId: auth?.currentUser?.uid, 
+      })
+      // getMovieList();
+    } catch(err) {
+      console.error(err)
+    }
+  }
+
+  // for the balance functions ///////////////
+
   return (
     <div>
-      <Navbar myFunction={setFirst} stake={setAmountToStake} multiply={setStakeMultiplier} />
+      <Navbar />
       <Testimonies />
+      <div className="navbar-balance">
+          <h1><Link to="../deposit">{users.map ((users) => (
+          <div>
+            <p key={users.id} style={{color:"red", fontSize:"25px", letterSpacing:".5px"}}> Balance: ₦ {users.balance-staking * users.stake}</p>
+            <p>{users.stake - users.multiplier}</p>
+          </div>
+        ))}</Link></h1>
+        </div>
       <div className="whole">
 
         <div className="main">
@@ -201,7 +273,7 @@ const Body = () => {
                 <input 
                 type="number" 
                 required min="200" 
-                onChange={(e) => setAmountToStake(e.target.value)}
+                onChange={(e) => setStaking(Number(e.target.value))}
                 id='amount-to-stake'
                 placeholder='Enter amount' 
                 />
@@ -213,7 +285,7 @@ const Body = () => {
 
                 <input 
                 type="number" 
-                onChange={(e) => setStakeMultiplier(e.target.value)}
+                onChange={(e) => setMultiplier(Number(e.target.value))}
                 id="multiplier" 
                 min="2"
                 placeholder='Enter your multiplier' 
