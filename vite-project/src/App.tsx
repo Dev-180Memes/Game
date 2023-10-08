@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom'
 import { Profile } from './components/js/Profile'
 import { Withdraw } from './components/js/Withdraw'
 import { Deposit } from './components/js/Deposit'
-import { Body } from './components/js/Body'
+import  Body  from '../src/components/js/Body'
 
 const App = () => {
   return (

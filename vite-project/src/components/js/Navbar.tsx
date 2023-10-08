@@ -8,14 +8,24 @@ import { googleProvider } from "../Config/Firebase";
 import { createUserWithEmailAndPassword, signInWithPopup, signOut} from "firebase/auth";
 
 
-const Navbar = () => {
+const Navbar = (props) => {
 
   //// trials ////////////////////////////////////////
 
   const [users, setUsers] = useState([])
   const [balancers, setBalancers] = useState(200)
+  const [display, setDisplay] = useState()
   const depositCollectionRef = collection(db, "users")
 
+  const mainBalance = usersPlus.id.balance
+
+  const useThis = () => {
+    setBalancers(props.stake)
+  }
+
+  const calculation = () => {
+    setDisplay(setBalancers * mainBalance )
+  }
 
   
   // from Chat /////////////////////////////
@@ -115,15 +125,18 @@ const Navbar = () => {
 
         <div className="profile">
           <p><Link to="../profile">PROFILE</Link></p>
+          <p>{display}</p>
         </div>
+
+        <button onClick={calculation}>Check</button>
 
         <div className="withdraw">
           <p><Link to="../withdraw">WITHDRAW</Link></p>
         </div> 
 
         <div className="navbar-balance">
-          <h1><Link to="../deposit">{users.map ((users) => (
-          <p onChange={(e) => setBalancers(e.target.value)} key={users.id}>₦ {users.balance}</p>
+          <h1><Link to="../deposit">{users.map ((usersPlus) => (
+          <p key={usersPlus.id}>₦ {usersPlus.balance}</p>
         ))}</Link></h1>
         </div>
 

@@ -12,6 +12,38 @@ const Body = () => {
   const [firstNumber, setFirstNumber] = useState()
   const [secondNumber, setSecondNumber] = useState()
   const [thirdNumber, setThirdNumber] = useState()
+
+  // for the amount and the multiplier /////////
+
+  const [amountToStake, setAmountToStake] = useState()
+  const [stakeMultiplier, setStakeMultiplier] = useState()
+
+  // for the amount and the multiplier /////////
+
+  // for the guessed numbers ///
+
+  const [one, setOne] = useState(1)
+  const [two, setTwo] = useState(2)
+  const [three, setThree] = useState(3)
+  const [four, setFour] = useState(4)
+  const [five, setFive] = useState(5)
+  const [six, setSix] = useState(6)
+  const [seven, setSeven] = useState(7)
+  const [eight, setEight] = useState(8)
+  const [nine, setNine] = useState(9)
+  const [ten, setTen] = useState(10)
+  const [eleven, setEleven] = useState(11)
+  const [twelve, setTwelve] = useState(12)
+  const [thirteen, setThriteen] = useState(13)
+  const [fourteen, setFourteen] = useState(14)
+  const [fiveteen, setFiveteen] = useState(15)
+  const [sixteen, setSixteen] = useState(16)
+  const [seventeen, setSeventeen] = useState(17)
+  const [eighteen, setEigtheen] = useState(18)
+  const [nineteen, setNineteen] = useState(19)
+  const [twenty, setTwenty] = useState(20)
+
+  // for the guessed numbers ///
   
   const setFirst = () => {
     const first = Math.floor((Math.random() + 1) * 10)
@@ -32,7 +64,6 @@ const Body = () => {
     setFirst();
     setSecond();
     setThird();
-    usal();
     // check();
   }
 
@@ -73,19 +104,16 @@ const Body = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar myFunction={setFirst} stake={setAmountToStake} multiply={setStakeMultiplier} />
       <Testimonies />
       <div className="whole">
 
         <div className="main">
 
-            <div className="intro">
-            {/* {users.map ((digits) => (
-              <h1>₦{digits.balance}</h1>
-            ))} */}
-              <h1>YOU PLAY</h1> <br />
-              <h1 className='we-pay'>WE PAY!</h1>
-            </div>
+          <div className="intro">
+            <h1>YOU PLAY</h1> <br />
+            <h1 className='we-pay'>WE PAY!</h1>
+          </div>
 
         </div>
 
@@ -134,26 +162,26 @@ const Body = () => {
               <h2>SELECT YOUR<br />OUTCOMES</h2>
             </div>
             <div className="outcomes">
-              <p className='use13'>1</p>
-              <p className='use14'>2</p>
-              <p className='use15'>3</p>
-              <p className='use16'>4</p>
-              <p className='use17'>5</p>
-              <p className='use18'>6</p>
-              <p className='use19'>7</p>
-              <p className='use20'>8</p>
-              <p className='use21'>9</p>
-              <p className='use22'>10</p>
-              <p className='use23'>11</p>
-              <p className='use24'>12</p>
-              <p className='use25'>13</p>
-              <p className='use26'>14</p>
-              <p className='use27'>15</p>
-              <p className='use28'>16</p>
-              <p className='use29'>17</p>
-              <p className='use30'>18</p>
-              <p className='use31'>19</p>
-              <p className='use32'>20</p>
+              <p className='use13'>{one}</p>
+              <p className='use14'>{two}</p>
+              <p className='use15'>{three}</p>
+              <p className='use16'>{four}</p>
+              <p className='use17'>{five}</p>
+              <p className='use18'>{six}</p>
+              <p className='use19'>{seven}</p>
+              <p className='use20'>{eight}</p>
+              <p className='use21'>{nine}</p>
+              <p className='use22'>{ten}</p>
+              <p className='use23'>{eleven}</p>
+              <p className='use24'>{twelve}</p>
+              <p className='use25'>{thirteen}</p>
+              <p className='use26'>{fourteen}</p>
+              <p className='use27'>{fiveteen}</p>
+              <p className='use28'>{sixteen}</p>
+              <p className='use29'>{seventeen}</p>
+              <p className='use30'>{eighteen}</p>
+              <p className='use31'>{nineteen}</p>
+              <p className='use32'>{twenty}</p>
             </div>
           </div>
         </div>
@@ -173,6 +201,7 @@ const Body = () => {
                 <input 
                 type="number" 
                 required min="200" 
+                onChange={(e) => setAmountToStake(e.target.value)}
                 id='amount-to-stake'
                 placeholder='Enter amount' 
                 />
@@ -184,6 +213,7 @@ const Body = () => {
 
                 <input 
                 type="number" 
+                onChange={(e) => setStakeMultiplier(e.target.value)}
                 id="multiplier" 
                 min="2"
                 placeholder='Enter your multiplier' 
