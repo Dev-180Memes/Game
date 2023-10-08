@@ -14,18 +14,17 @@ const Navbar = (props) => {
 
   const [users, setUsers] = useState([])
   const [balancers, setBalancers] = useState(200)
-  const [display, setDisplay] = useState()
+  const [display, setDisplay] = useState(balancers)
   const depositCollectionRef = collection(db, "users")
 
-  const mainBalance = usersPlus.id.balance
 
-  const useThis = () => {
-    setBalancers(props.stake)
-  }
+  // const useThis = () => {
+  //   setBalancers(props.stake)
+  // }
 
-  const calculation = () => {
-    setDisplay(setBalancers * mainBalance )
-  }
+  // const calculation = () => {
+  //   setDisplay(balancers * mainBalance )
+  // }
 
   
   // from Chat /////////////////////////////
@@ -51,7 +50,29 @@ const Navbar = (props) => {
     };
 
     getUsersData();
-  }, [users]); // Include 'user' in the dependency array to refetch data when the user changes
+  }, [users, depositCollectionRef]); 
+
+
+  const handleAdd = () => {
+    if (users.length === 0) {
+      console.error('User data not available');
+      return;
+    }
+
+    const currentUser = users[0];
+    const newBalance = currentUser.balance / 1000; // Example: Add 10 to the balance
+
+    // Update the balance in Firestore
+    const userDocRef = db.collection('users').doc(user.uid);
+    userDocRef
+      .update({ balance: newBalance })
+      .then(() => {
+        setUsers([{ ...currentUser, balance: newBalance }]);
+      })
+      .catch((error) => {
+        console.error('Error updating balance:', error);
+      });
+  };
   
   // const handlePlay = async () => {
   // if (users.length === 0) {
@@ -83,24 +104,24 @@ const Navbar = (props) => {
   
   
 
-  useEffect (() => {
-    const getMovieList = async () => {
+  // useEffect (() => {
+  //   const getMovieList = async () => {
 
-      try {
-        const data = await getDocs(depositCollectionRef);
-        const filteredData = data.docs.map((doc) => ({
-        ...doc.data(), 
-        id: doc.userId,
-      }))
-      setUsers(filteredData)
-    } catch (err) {
-      console.error(err)
-    }
-    }  
+  //     try {
+  //       const data = await getDocs(depositCollectionRef);
+  //       const filteredData = data.docs.map((doc) => ({
+  //       ...doc.data(), 
+  //       id: doc.userId,
+  //     }))
+  //     setUsers(filteredData)
+  //   } catch (err) {
+  //     console.error(err)
+  //   }
+  //   }  
 
-    getMovieList();
+  //   getMovieList();
       
-  }, [])
+  // }, [])
 
   //////////////////////////////////////////////////
 
@@ -125,18 +146,17 @@ const Navbar = (props) => {
 
         <div className="profile">
           <p><Link to="../profile">PROFILE</Link></p>
-          <p>{display}</p>
         </div>
-
-        <button onClick={calculation}>Check</button>
 
         <div className="withdraw">
           <p><Link to="../withdraw">WITHDRAW</Link></p>
         </div> 
 
         <div className="navbar-balance">
-          <h1><Link to="../deposit">{users.map ((usersPlus) => (
-          <p key={usersPlus.id}>₦ {usersPlus.balance}</p>
+          <h1><Link to="../deposit">{users.map ((users) => (
+          <div>
+            <p key={users.id}>₦ {users.balance-balancers}</p>
+          </div>
         ))}</Link></h1>
         </div>
 
