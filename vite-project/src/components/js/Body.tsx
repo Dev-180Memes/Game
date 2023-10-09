@@ -68,9 +68,27 @@ const Body = () => {
     setThird();
     onSubmitMovies();
     const result = staking * multiplier; 
-    
+    mathBal(result);
 
   }
+
+  const mathBal = (result) => {
+    if (users.length > 0) {
+      const currentUser = users[0];
+      const newBalance = currentUser.balance - result;
+      // Update the balance in Firestore
+      const userDocRef = db.collection('users').doc(auth?.currentUser?.uid);
+      userDocRef
+        .update({ balance: newBalance })
+        .then(() => {
+          setUsers([{ ...currentUser, balance: newBalance }]);
+        })
+        .catch((error) => {
+          console.error('Error updating balance:', error);
+        });
+    }
+  };
+  
 
   //////////////////////////////////////////////////////
 
