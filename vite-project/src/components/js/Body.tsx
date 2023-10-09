@@ -67,11 +67,9 @@ const Body = () => {
     setSecond();
     setThird();
     onSubmitMovies();
-    // check();
-  }
+    const result = staking * multiplier; 
+    
 
-  const mathBal = () => {
-    p
   }
 
   //////////////////////////////////////////////////////
