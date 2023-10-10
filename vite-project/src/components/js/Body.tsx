@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import "../css/body.css"
 import Navbar from './Navbar'
-import  { collection, addDoc, doc, getDocs,where, query }  from 'firebase/firestore'
+import  { collection, updateDoc, addDoc, doc, getDocs,where, query }  from 'firebase/firestore'
 import { db, auth } from '../Config/Firebase'
 import Testimonies from './Testimonies'
 
@@ -67,28 +67,28 @@ const Body = () => {
     setSecond();
     setThird();
     onSubmitMovies();
-    const result = staking * multiplier; 
-    mathBal(result);
-
+    updateMovieTitle();
+    // const result = staking * multiplier; 
+    // mathBal(result);
   }
 
-  const mathBal = (result) => {
-    if (users.length > 0) {
-      const currentUser = users[0];
-      const newBalance = currentUser.balance - result;
-      // Update the balance in Firestore
-      const userDocRef = db.collection('users').doc(auth?.currentUser?.uid);
-      userDocRef
-        .update({ balance: newBalance })
-        .then(() => {
-          setUsers([{ ...currentUser, balance: newBalance }]);
-        })
-        .catch((error) => {
-          console.error('Error updating balance:', error);
-        });
-    }
-  };
-  
+  // const mathBal = (result) => {
+  //   if (users.length > 0) {
+  //     const currentUser = users[0];
+  //     const newBalance = currentUser.balance - result;
+  //     // Update the balance in Firestore
+  //     const userDocRef = db.collection('users').doc(auth?.currentUser?.uid);
+  //     userDocRef
+  //       .update({ balance: newBalance })
+  //       .then(() => {
+  //         setUsers([{ ...currentUser, balance: newBalance }]);
+  //       })
+  //       .catch((error) => {
+  //         console.error('Error updating balance:', error);
+  //       });
+  //   }
+  // };
+   
 
   //////////////////////////////////////////////////////
 
@@ -165,7 +165,7 @@ const Body = () => {
     };
 
     getUsersData();
-  }, [users, depositCollectionRef]); 
+  }, [users]); 
 
   const onSubmitMovies = async () => {
     try {
@@ -180,6 +180,11 @@ const Body = () => {
     }
   }
 
+  const updateMovieTitle = async () => {
+    // const movieDoc = doc(db, "users");
+    await updateDoc(depositCollectionRef, { stake: staking });
+  };
+
   // for the balance functions ///////////////
 
   return (
@@ -189,8 +194,12 @@ const Body = () => {
       <div className="navbar-balance">
           <h1><Link to="../deposit">{users.map ((users) => (
           <div>
-            <p key={users.id} style={{color:"red", fontSize:"25px", letterSpacing:".5px"}}> Balance: ₦ {users.balance-staking * users.stake}</p>
+            <p key={users.id} style={{color:"red", fontSize:"25px", letterSpacing:".5px"}}> Balance: ₦ {users.balance}</p>
             <p>{users.stake - users.multiplier}</p>
+            {/* <p key={users.id} style={{ color: "red", fontSize: "25px", letterSpacing: ".5px" }}>
+              Balance: ₦ {users.length > 0 ? users[0].balance - staking * users[0].stake : 0}
+            </p> */}
+
           </div>
         ))}</Link></h1>
         </div>
@@ -312,7 +321,7 @@ const Body = () => {
 
             </div>
 
-            <button onClick={general} className='the-play'>PLAY!</button>
+            <button type='button' onClick={general} className='the-play'>PLAY!</button>
 
           </form>
 
