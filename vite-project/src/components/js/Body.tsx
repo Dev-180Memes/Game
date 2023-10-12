@@ -195,7 +195,7 @@ const Body = () => {
           <h1><Link to="../deposit">{users.map ((users) => (
           <div>
             <p key={users.id} style={{color:"red", fontSize:"25px", letterSpacing:".5px"}}> Balance: ₦ {users.balance}</p>
-            <p>{users.stake - users.multiplier}</p>
+            
             {/* <p key={users.id} style={{ color: "red", fontSize: "25px", letterSpacing: ".5px" }}>
               Balance: ₦ {users.length > 0 ? users[0].balance - staking * users[0].stake : 0}
             </p> */}
