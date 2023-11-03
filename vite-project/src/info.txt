@@ -1,0 +1,4 @@
+// ideas for the bug of the game project
+
+1. check the firebase code and permissions
+2. set the balance to also be included in the arithemtic calls in the code
